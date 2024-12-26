@@ -1,6 +1,6 @@
+import 'package:find_space_station/ui/auth/widgets/build_login_body.dart';
 import 'package:find_space_station/viewmodels/auth_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:find_space_station/ui/auth/widgets/build_login_body.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {

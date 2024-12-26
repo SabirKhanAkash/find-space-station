@@ -12,19 +12,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final HomeViewModel homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
+  late HomeViewModel homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
 
   @override
   void initState() {
-    homeViewModel.getIssCurrentLocation(context);
+    homeViewModel.getIssCurrentLocation();
+    homeViewModel.startCountDownTimer();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    homeViewModel.timer.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context, "Find Space Station"),
-      body: buildHomeBody(),
+      appBar: buildAppBar(context, "Find Int'l Space Station"),
+      body: buildHomeBody(context),
     );
   }
 }

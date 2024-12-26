@@ -1,6 +1,6 @@
 import 'package:find_space_station/core/services/api_service.dart';
 import 'package:find_space_station/core/services/log_service.dart';
-import 'package:find_space_station/data/repositories/remote/auth_repository.dart';
+import 'package:find_space_station/data/repositories/remote/home_repository.dart';
 import 'package:find_space_station/ui/auth/login_screen.dart';
 import 'package:find_space_station/utils/config/app_color.dart';
 import 'package:find_space_station/utils/config/app_text.dart';

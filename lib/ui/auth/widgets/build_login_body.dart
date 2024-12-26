@@ -19,28 +19,34 @@ Widget buildLoginBody() {
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 15),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  authState.isLoading
-                      ? const CircularProgressIndicator.adaptive()
-                      : authState.anonymousLoginSuccess
-                          ? Icon(
-                              Icons.verified_rounded,
-                              color: AppColor().primary,
-                            )
-                          : Icon(
-                              Icons.error_rounded,
-                              color: AppColor().primary,
-                            ),
-                  const SizedBox(width: 10),
-                  authState.isLoading
-                      ? const Text("Signing you anonymously...")
-                      : authState.anonymousLoginSuccess
-                          ? const Text("Anonymous Login Successful!")
-                          : const Text("Tap here to try again")
-                ],
+              GestureDetector(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    authState.isLoading
+                        ? const CircularProgressIndicator.adaptive()
+                        : authState.anonymousLoginSuccess
+                            ? Icon(
+                                Icons.verified_rounded,
+                                color: AppColor().primary,
+                              )
+                            : Icon(
+                                Icons.error_rounded,
+                                color: AppColor().primary,
+                              ),
+                    const SizedBox(width: 10),
+                    authState.isLoading
+                        ? const Text("Signing you anonymously...")
+                        : authState.anonymousLoginSuccess
+                            ? const Text("Anonymous Login Successful!")
+                            : const Text("Tap here to try again")
+                  ],
+                ),
+                onTap: () =>
+                    authState.isLoading == false && authState.anonymousLoginSuccess == false
+                        ? authState.login(context)
+                        : (),
               ),
             ],
           );

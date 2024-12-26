@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:find_space_station/data/models/iss_model/iss_position.dart';
 import 'package:json_annotation/json_annotation.dart';
 

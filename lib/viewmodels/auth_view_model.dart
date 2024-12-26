@@ -1,6 +1,4 @@
 import 'package:find_space_station/core/services/log_service.dart';
-import 'package:find_space_station/data/dto/auth_dto.dart';
-import 'package:find_space_station/data/repositories/remote/auth_repository.dart';
 import 'package:find_space_station/ui/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +28,6 @@ class AuthViewModel extends ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Failed to sign in anonymously")),
       );
-      throw Exception(error.toString());
     } finally {
       isLoading = false;
       notifyListeners();

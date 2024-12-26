@@ -1,7 +1,7 @@
-import 'package:find_space_station/utils/config/env.dart';
-import 'package:logger/logger.dart';
 import 'dart:io';
 
+import 'package:find_space_station/utils/config/env.dart';
+import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Log {

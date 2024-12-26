@@ -94,12 +94,12 @@ BEGIN
 BEGIN
         VALUE
 "CompanyName", "com.akash" "\0"
-VALUE "FileDescription", "flutter_mvvm_starter" "\0"
+VALUE "FileDescription", "find_space_station" "\0"
 VALUE "FileVersion", VERSION_AS_STRING "\0"
-VALUE "InternalName", "flutter_mvvm_starter" "\0"
+VALUE "InternalName", "find_space_station" "\0"
 VALUE "LegalCopyright", "Copyright (C) 2024 com.akash. All rights reserved." "\0"
-VALUE "OriginalFilename", "flutter_mvvm_starter.exe" "\0"
-VALUE "ProductName", "flutter_mvvm_starter" "\0"
+VALUE "OriginalFilename", "find_space_station.exe" "\0"
+VALUE "ProductName", "find_space_station" "\0"
 VALUE "ProductVersion", VERSION_AS_STRING "\0"
 END
         END

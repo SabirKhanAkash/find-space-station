@@ -1,4 +1,4 @@
-import 'package:flutter_mvvm_starter/utils/config/env.dart';
+import 'package:find_space_station/utils/config/env.dart';
 import 'package:logger/logger.dart';
 import 'dart:io';
 

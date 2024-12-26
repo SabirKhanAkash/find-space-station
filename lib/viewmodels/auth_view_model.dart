@@ -1,36 +1,35 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_mvvm_starter/core/services/log_service.dart';
-import 'package:flutter_mvvm_starter/data/dto/auth_dto.dart';
-import 'package:flutter_mvvm_starter/data/models/data_model/data.dart';
-import 'package:flutter_mvvm_starter/data/repositories/remote/auth_repository.dart';
+import 'package:find_space_station/core/services/log_service.dart';
+import 'package:find_space_station/data/dto/auth_dto.dart';
+import 'package:find_space_station/data/repositories/remote/auth_repository.dart';
+import 'package:find_space_station/ui/home/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class AuthViewModel extends ChangeNotifier {
-  final AuthRepository authRepository;
-  var isLoading = false;
-  var _isObscure = true;
+  var isLoading = true;
+  var anonymousLoginSuccess = false;
 
-  bool get isObscure => _isObscure;
-
-  AuthViewModel({required this.authRepository});
-
-  void toggleObscureness() {
-    _isObscure = !isObscure;
-    notifyListeners();
-  }
-
-  Future<void> login(BuildContext context, AuthDto authDto) async {
+  Future<void> login(BuildContext context) async {
     isLoading = true;
     notifyListeners();
     try {
-      Data? authResponse =
-          await authRepository.login({'username': authDto.username, 'password': authDto.password});
+      var userCredential = await FirebaseAuth.instance.signInAnonymously();
+      Log.create(Level.info, "Anonymous Login Successful for ${userCredential.user?.uid ?? "N/A"}");
+      anonymousLoginSuccess = true;
+      notifyListeners();
+      Future.delayed(const Duration(milliseconds: 700), () {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      });
 
-      Log.create(Level.info, "Successfully Logged In: ${jsonEncode(authResponse)}");
       notifyListeners();
     } catch (error) {
+      anonymousLoginSuccess = false;
+      notifyListeners();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Failed to sign in anonymously")),
+      );
       throw Exception(error.toString());
     } finally {
       isLoading = false;

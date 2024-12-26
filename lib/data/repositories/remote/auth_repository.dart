@@ -1,17 +1,18 @@
-import 'package:flutter_mvvm_starter/core/services/api_service.dart';
-import 'package:flutter_mvvm_starter/data/models/data_model/data.dart';
-import 'package:flutter_mvvm_starter/utils/config/env.dart';
+import 'package:find_space_station/core/services/api_service.dart';
+import 'package:find_space_station/data/models/data_model/data.dart';
+import 'package:find_space_station/utils/config/api_endpoint.dart';
+import 'package:find_space_station/utils/config/env.dart';
 
-class AuthRepository {
+class HomeRepository {
   final ApiService apiService;
 
-  AuthRepository({required this.apiService});
+  HomeRepository({required this.apiService});
 
-  Future<Data>? login(Map<String, dynamic> body) async {
+  Future<Data>? getIssCurrentLocation(Map<String, dynamic>? body) async {
     dynamic json;
     try {
-      json = await apiService.callApi("POST", Uri.parse('${Env().apiBaseUrl}/auth/login'),
-          {'Content-Type': 'application/json'}, body);
+      json = await apiService.callApi(
+          "GET", Uri.parse(ApiEndpoint().issNow), {'Content-Type': 'application/json'}, body);
       if (json == null) throw Exception('Bad Response');
     } catch (error) {
       throw Exception(error.toString());

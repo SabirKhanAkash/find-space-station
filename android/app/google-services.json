@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748395314789",
+    "project_id": "find-space-station",
+    "storage_bucket": "find-space-station.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748395314789:android:9311a7071d335924bbd08c",
+        "android_client_info": {
+          "package_name": "com.akash.find_space_station"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoWAH0ebo7NmxkrO4DgfxZWaib_yKRtsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

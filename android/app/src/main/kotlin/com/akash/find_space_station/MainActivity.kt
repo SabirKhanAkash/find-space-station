@@ -1,4 +1,4 @@
-package com.akash.flutter_mvvm_starter
+package com.akash.find_space_station
 
 import io.flutter.embedding.android.FlutterActivity
 

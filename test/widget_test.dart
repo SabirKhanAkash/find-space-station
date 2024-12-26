@@ -6,7 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm_starter/main.dart';
+import 'package:find_space_station/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

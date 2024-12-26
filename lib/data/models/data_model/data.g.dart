@@ -7,23 +7,15 @@ part of 'data.dart';
 // **************************************************************************
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      id: (json['id'] as num?)?.toInt(),
-      username: json['username'] as String?,
-      email: json['email'] as String?,
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
-      gender: json['gender'] as String?,
-      image: json['image'] as String?,
+      iss_position: json['iss_position'] == null
+          ? null
+          : IssPosition.fromJson(json['iss_position'] as Map<String, dynamic>),
+      timestamp: (json['timestamp'] as num?)?.toInt(),
       message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
-      'id': instance.id,
-      'username': instance.username,
-      'email': instance.email,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'gender': instance.gender,
-      'image': instance.image,
+      'iss_position': instance.iss_position,
+      'timestamp': instance.timestamp,
       'message': instance.message,
     };

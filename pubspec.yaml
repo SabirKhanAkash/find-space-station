@@ -1,0 +1,38 @@
+name: flutter_mvvm_starter
+description: "An MVVM patterned starter for Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_splash_screen: ^3.0.0
+  http: ^1.2.2
+  json_annotation: ^4.9.0
+  logger: ^2.4.0
+  path_provider: ^2.1.4
+  provider: ^6.1.2
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: 2.4.11
+  json_serializable: ^6.8.0
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/others/
+
+  fonts:
+    - family: inter
+      fonts:
+        - asset: assets/fonts/inter.ttf
+          style: normal

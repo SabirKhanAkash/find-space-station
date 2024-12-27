@@ -7,5 +7,6 @@ class AppText {
   final locationPermDenied = "Location permissions are permanently denied";
   final locationDenied = "Location permissions are denied";
   final locationDisabled = "Phone's location service is disabled";
-  final locationNotFetched = "Location not fetched";
+  final locationNotFetched = "fetching location...";
+  final refreshCountDownTimer = 60;
 }

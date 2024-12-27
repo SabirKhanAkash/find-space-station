@@ -21,7 +21,7 @@ class HomeViewModel extends ChangeNotifier {
   var issOnCountry = 'Unknown';
   var lastUpdatedTime = "N/A";
   var lastUpdatedTimeInUtc = "N/A";
-  var seconds = 60;
+  var seconds = AppText().refreshCountDownTimer;
   var error = "N/A";
   late Timer timer;
 
@@ -51,32 +51,32 @@ class HomeViewModel extends ChangeNotifier {
       lastUpdatedTime = DateUtil.formatDateTime(DateTime.now());
       lastUpdatedTimeInUtc = DateUtil.formatDateTimeInUtc(DateTime.now());
       isLoading = false;
-      await getMyLocation();
       notifyListeners();
       if (locationStatus != AppText().locationDisabled &&
           locationStatus != AppText().locationDenied &&
           locationStatus != AppText().locationPermDenied) {
+        await getMyLocation();
         issOnCountry = await getCountryFromLatLng(
             double.parse(issCurrentLocation?.iss_position?.latitude ?? "0.0"),
             double.parse(issCurrentLocation?.iss_position?.longitude ?? "0.0"));
-        notifyListeners();
         if (issOnCountry == myCountry) {
           isIssOnMyCountry = true;
-          notifyListeners();
         }
+        notifyListeners();
       }
+
       Log.create(
           Level.info,
           "ISS current location is: ${issCurrentLocation?.iss_position?.latitude ?? "0.0"}, "
           "${issCurrentLocation?.iss_position?.longitude ?? "0.0"} | on country: $issOnCountry | my"
-          " country: $myCountry");
+          " country: ${await getMyLocation()}");
     } catch (e) {
       error = e.toString();
       Log.create(Level.error, "Error: $error");
       issOnCountry = 'Unknown';
       notifyListeners();
     } finally {
-      isLoading = false;
+      if (isLoading == true) isLoading = false;
       notifyListeners();
     }
   }
@@ -109,7 +109,7 @@ class HomeViewModel extends ChangeNotifier {
     }
 
     Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.reduced, forceAndroidLocationManager: false);
+        desiredAccuracy: LocationAccuracy.bestForNavigation, forceAndroidLocationManager: true);
     myCountry = await getCountryFromLatLng(position.latitude, position.longitude);
     locationStatus = "";
     notifyListeners();

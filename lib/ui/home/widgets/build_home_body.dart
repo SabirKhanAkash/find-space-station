@@ -67,7 +67,7 @@ Widget buildHomeBody(BuildContext context) {
               children: [
                 const Expanded(
                   child: Text(
-                    "Last Updated (UTC): ",
+                    "Last Updated at (UTC): ",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -88,7 +88,7 @@ Widget buildHomeBody(BuildContext context) {
               children: [
                 const Expanded(
                   child: Text(
-                    "Last Updated (Local): ",
+                    "Last Updated at (Local): ",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -116,14 +116,15 @@ Widget buildHomeBody(BuildContext context) {
                   ),
                 ),
                 Expanded(
-                  child: data.locationStatus == ""
+                  child: data.locationStatus == "" ||
+                          data.locationStatus == AppText().locationNotFetched
                       ? Text(
                           data.issOnCountry,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         )
                       : Text(
-                          data.issOnCountry + " (${data.locationStatus})",
+                          "${data.issOnCountry} (${data.locationStatus})",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -134,7 +135,7 @@ Widget buildHomeBody(BuildContext context) {
               height: 10,
             ),
             Center(
-              child: data.isLoading
+              child: data.isLoading == true
                   ? Padding(
                       padding: const EdgeInsets.all(6.0),
                       child: CircularProgressIndicator.adaptive(
@@ -156,6 +157,7 @@ Widget buildHomeBody(BuildContext context) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 backgroundColor: AppColor().primary,
+                                duration: const Duration(milliseconds: 250),
                                 content: Text(
                                     style: TextStyle(color: AppColor().white),
                                     AppText().issOnMyCountryText)),
@@ -163,6 +165,7 @@ Widget buildHomeBody(BuildContext context) {
                         } else if (data.issOnCountry == 'Unknown') {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
+                                duration: const Duration(milliseconds: 150),
                                 content: Text(
                                     style: TextStyle(color: AppColor().white),
                                     AppText().issCountryNotFound)),
@@ -170,6 +173,7 @@ Widget buildHomeBody(BuildContext context) {
                         } else if (data.error != "N/A") {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
+                                duration: const Duration(milliseconds: 150),
                                 backgroundColor: AppColor().red,
                                 content: Text(
                                     style: TextStyle(color: AppColor().white), AppText().errorMsg)),

@@ -33,25 +33,25 @@ A Cross-Platform Flutter App where users log in anonymously with Firebase. Users
       <i>Splash Screen</i>
     </td>
     <td style="text-align: center;">
-      <img src="https://github.com/user-attachments/assets/98fb4f63-8fc6-4c02-ab09-2a8f8dd7e99d" width="270" height="570" alt="Main Menu Screen"/><br>
+      <img src="https://github.com/user-attachments/assets/98fb4f63-8fc6-4c02-ab09-2a8f8dd7e99d" width="270" height="570" alt="Login Screen (Loading)"/><br>
       <i>Login Screen (Loading)</i>
     </td>
     <td style="text-align: center;">
-      <img src="https://github.com/user-attachments/assets/81b87c54-f560-4bb5-986c-4f183762df22" width="270" height="570" alt="To-Do List Screen"/><br>
+      <img src="https://github.com/user-attachments/assets/81b87c54-f560-4bb5-986c-4f183762df22" width="270" height="570" alt="Login Screen (Login Success)"/><br>
       <i>Login Screen (Login Success)</i>
     </td>
   </tr>
   <tr>
     <td style="text-align: center;">
-      <img src="https://github.com/user-attachments/assets/004056cc-cd55-4806-a548-469a72fd3782" width="270" height="570" alt="To-Do Details Screen"/><br>
+      <img src="https://github.com/user-attachments/assets/004056cc-cd55-4806-a548-469a72fd3782" width="270" height="570" alt="Home Screen"/><br>
       <i>Home Screen</i>
     </td>
     <td style="text-align: center;">
-      <img src="https://github.com/user-attachments/assets/d49a38e4-0fd6-4864-8e64-4eaa5d564782" width="270" height="570" alt="Task Add Screen"/><br>
+      <img src="https://github.com/user-attachments/assets/d49a38e4-0fd6-4864-8e64-4eaa5d564782" width="270" height="570" alt="Space Station on User's Country"/><br>
       <i>Space Station on User's Country</i>
     </td>
     <td style="text-align: center;">
-      <img src="https://github.com/user-attachments/assets/6fe7ebd1-f737-44b5-bde3-56a512a60520" width="270" height="570" alt="Push Notification with Tasks"/><br>
+      <img src="https://github.com/user-attachments/assets/6fe7ebd1-f737-44b5-bde3-56a512a60520" width="270" height="570" alt="Space Station on Unknown Country/Region"/><br>
       <i>Space Station on Unknown Country/Region</i>
     </td>
   </tr>
@@ -59,7 +59,7 @@ A Cross-Platform Flutter App where users log in anonymously with Firebase. Users
 
 ## Demo Video
 
-[![Watch the video]()]()
+[![Watch the video](https://github.com/user-attachments/assets/be4e4ce0-de51-4849-8fb3-462fcec9f75d)](https://github.com/user-attachments/assets/be4e4ce0-de51-4849-8fb3-462fcec9f75d)
 
 ## Installation
 
@@ -95,7 +95,7 @@ A Cross-Platform Flutter App where users log in anonymously with Firebase. Users
 ## APK Download
 
 Download the APK file
-from [here](https://drive.google.com/file/d/17DROlQhvtdpT-TNWZIUHQkUx0ZjvY72w/view?usp=sharing)
+from [here](https://github.com/SabirKhanAkash/find-space-station/tree/master/dist)
 
 ## Feedback
 

@@ -152,7 +152,7 @@ Widget buildHomeBody(BuildContext context) {
                       ),
                       onPressed: () async {
                         await data.getIssCurrentLocation();
-                        if (data.isIssOnMyCountry) {
+                        if (data.isIssOnMyCountry == true) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 backgroundColor: AppColor().primary,
@@ -160,16 +160,14 @@ Widget buildHomeBody(BuildContext context) {
                                     style: TextStyle(color: AppColor().white),
                                     AppText().issOnMyCountryText)),
                           );
-                        }
-                        if (data.issOnCountry == 'Unknown') {
+                        } else if (data.issOnCountry == 'Unknown') {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 content: Text(
                                     style: TextStyle(color: AppColor().white),
                                     AppText().issCountryNotFound)),
                           );
-                        }
-                        if (data.error != "N/A") {
+                        } else if (data.error != "N/A") {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 backgroundColor: AppColor().red,

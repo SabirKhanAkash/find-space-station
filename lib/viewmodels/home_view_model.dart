@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:find_space_station/core/services/log_service.dart';
+import 'package:find_space_station/data/models/data_model/data.dart';
 import 'package:find_space_station/data/repositories/remote/home_repository.dart';
 import 'package:find_space_station/utils/config/app_text.dart';
 import 'package:find_space_station/utils/date_util.dart';
@@ -44,13 +45,13 @@ class HomeViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     try {
-      var issCurrentLocation = await homeRepository.getIssCurrentLocation(null);
+      Data? issCurrentLocation = await homeRepository.getIssCurrentLocation(null);
       issCurrentLat = issCurrentLocation?.iss_position?.latitude ?? "N/A";
       issCurrentLng = issCurrentLocation?.iss_position?.longitude ?? "N/A";
       lastUpdatedTime = DateUtil.formatDateTime(DateTime.now());
       lastUpdatedTimeInUtc = DateUtil.formatDateTimeInUtc(DateTime.now());
       isLoading = false;
-      getMyLocation();
+      await getMyLocation();
       notifyListeners();
       if (locationStatus != AppText().locationDisabled &&
           locationStatus != AppText().locationDenied &&
@@ -58,7 +59,6 @@ class HomeViewModel extends ChangeNotifier {
         issOnCountry = await getCountryFromLatLng(
             double.parse(issCurrentLocation?.iss_position?.latitude ?? "0.0"),
             double.parse(issCurrentLocation?.iss_position?.longitude ?? "0.0"));
-        // locationStatus = "";
         notifyListeners();
         if (issOnCountry == myCountry) {
           isIssOnMyCountry = true;
@@ -68,10 +68,12 @@ class HomeViewModel extends ChangeNotifier {
       Log.create(
           Level.info,
           "ISS current location is: ${issCurrentLocation?.iss_position?.latitude ?? "0.0"}, "
-          "${issCurrentLocation?.iss_position?.longitude ?? "0.0"} on country: $issOnCountry");
+          "${issCurrentLocation?.iss_position?.longitude ?? "0.0"} | on country: $issOnCountry | my"
+          " country: $myCountry");
     } catch (e) {
       error = e.toString();
       Log.create(Level.error, "Error: $error");
+      issOnCountry = 'Unknown';
       notifyListeners();
     } finally {
       isLoading = false;
@@ -106,8 +108,8 @@ class HomeViewModel extends ChangeNotifier {
       return "mUnknown";
     }
 
-    Position position =
-        await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.reduced);
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.reduced, forceAndroidLocationManager: false);
     myCountry = await getCountryFromLatLng(position.latitude, position.longitude);
     locationStatus = "";
     notifyListeners();

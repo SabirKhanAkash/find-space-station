@@ -11,7 +11,8 @@ IssPosition _$IssPositionFromJson(Map<String, dynamic> json) => IssPosition(
       longitude: json['longitude'] as String?,
     );
 
-Map<String, dynamic> _$IssPositionToJson(IssPosition instance) => <String, dynamic>{
+Map<String, dynamic> _$IssPositionToJson(IssPosition instance) =>
+    <String, dynamic>{
       'latitude': instance.latitude,
       'longitude': instance.longitude,
     };

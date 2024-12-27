@@ -16,8 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    homeViewModel.getIssCurrentLocation();
-    homeViewModel.startCountDownTimer();
+    Future.delayed(Duration.zero, () async {
+      await homeViewModel.getIssCurrentLocation();
+      homeViewModel.startCountDownTimer();
+    });
+
     super.initState();
   }
 

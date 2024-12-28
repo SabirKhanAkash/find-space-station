@@ -4,6 +4,7 @@ import 'package:find_space_station/data/repositories/remote/home_repository.dart
 import 'package:find_space_station/ui/auth/login_screen.dart';
 import 'package:find_space_station/utils/config/app_color.dart';
 import 'package:find_space_station/utils/config/app_text.dart';
+import 'package:find_space_station/utils/config/env.dart';
 import 'package:find_space_station/viewmodels/auth_view_model.dart';
 import 'package:find_space_station/viewmodels/home_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -65,6 +66,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: Env().envType == AppText().devEnv,
         title: AppText().title,
         theme: ThemeData(
           fontFamily: (AppText().mainFont),

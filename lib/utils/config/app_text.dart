@@ -9,4 +9,5 @@ class AppText {
   final locationDisabled = "Phone's location service is disabled";
   final locationNotFetched = "fetching location...";
   final refreshCountDownTimer = 60;
+  final devEnv = "devEnv";
 }

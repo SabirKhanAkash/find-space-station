@@ -86,11 +86,17 @@ A Cross-Platform Flutter App where users log in anonymously with Firebase. Users
    flutter pub get
    flutter run --release
 6. Test and Explore the App in Emulator
-7. To Generate the APK, run these commands in the terminal from the project directory
+7. To Generate the release build APK, run these commands in the terminal from the project directory
    ```bash
    flutter clean
    flutter pub get
-   flutter build apk --release
+   flutter build apk --release --split-per-abi
+
+Then go to this directory find-space-station\build\app\outputs\flutter-apk\
+three version of apk will be there 
+1. app-arm64-v8a-release.apk (Recommended)
+2. app-armeabi-v7a-release.apk (Recommended for older phones)
+3. app-x86_64-release.apk (Use for Android Emulator)
 
 ## APK Download
 
